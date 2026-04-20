@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.send("API is running...");
 });
 
-// Get transactions for logged in user
+// Get transactions
 app.get("/transactions", authMiddleware, (req, res) => {
   db.all("SELECT * FROM transactions WHERE user_id = ? ORDER BY date DESC", [req.user.id], (err, rows) => {
     if (err) return res.status(500).json(err);
@@ -22,12 +22,12 @@ app.get("/transactions", authMiddleware, (req, res) => {
   });
 });
 
-// Add transaction for logged in user
+// Add transaction
 app.post("/transactions", authMiddleware, (req, res) => {
-  const { title, amount, type, date } = req.body;
+  const { category_id, amount, date, note } = req.body;
   db.run(
-    "INSERT INTO transactions (title, amount, type, date, user_id) VALUES (?, ?, ?, ?, ?)",
-    [title, amount, type, date, req.user.id],
+    "INSERT INTO transactions (user_id, category_id, amount, date, note) VALUES (?, ?, ?, ?, ?)",
+    [req.user.id, category_id, amount, date, note],
     function (err) {
       if (err) return res.status(500).json(err);
       res.json({ id: this.lastID });
@@ -45,6 +45,14 @@ app.delete("/transactions/:id", authMiddleware, (req, res) => {
       res.json({ deleted: this.changes });
     }
   );
+});
+
+// Get all categories
+app.get("/categories", authMiddleware, (req, res) => {
+  db.all("SELECT * FROM categories", [], (err, rows) => {
+    if (err) return res.status(500).json(err);
+    res.json(rows);
+  });
 });
 
 app.listen(5000, () => console.log("Server running on port 5000"));
