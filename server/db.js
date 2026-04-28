@@ -103,6 +103,8 @@ db.serialize(() => {
     )
   `);
 
+  db.run(`ALTER TABLE goals ADD COLUMN icon TEXT`, () => {});
+
   // Goal contributions
   db.run(`
     CREATE TABLE IF NOT EXISTS goal_contributions (
