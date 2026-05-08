@@ -29,9 +29,14 @@ db.serialize(() => {
       name TEXT NOT NULL,
       type TEXT NOT NULL CHECK(type IN ('expense', 'income')),
       icon TEXT,
-      colour TEXT
+      colour TEXT,
+      user_id INTEGER,
+      FOREIGN KEY (user_id) REFERENCES users(id)
     )
   `);
+
+  // Add user_id column if it doesn't exist (for existing databases)
+  db.run(`ALTER TABLE categories ADD COLUMN user_id INTEGER REFERENCES users(id)`, () => {});
 
   // Budget periods
   db.run(`

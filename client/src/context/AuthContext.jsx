@@ -9,18 +9,18 @@ export function AuthProvider({ children }) {
   });
 
   const login = (userData, token) => {
-    localStorage.setItem("finwise_token", token);
-    localStorage.setItem("finwise_user", JSON.stringify(userData));
+    localStorage.setItem("spendly_token", token);
+    localStorage.setItem("spendly_user", JSON.stringify(userData));
     setUser(userData);
   };
 
   const logout = () => {
-    localStorage.removeItem("finwise_token");
-    localStorage.removeItem("finwise_user");
+    localStorage.removeItem("spendly_token");
+    localStorage.removeItem("spendly_user");
     setUser(null);
   };
 
-  const getToken = () => localStorage.getItem("finwise_token");
+  const getToken = () => localStorage.getItem("spendly_token");
 
   return (
     <AuthContext.Provider value={{ user, login, logout, getToken }}>
