@@ -3,11 +3,12 @@ import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 
 const links = [
-  { to: "/", label: "Dashboard", icon: "▦" },
-  { to: "/transactions", label: "Transactions", icon: "⇄" },
-  { to: "/savings", label: "Savings", icon: "🐖" },
-  { to: "/about", label: "About", icon: "ℹ" },
-  { to: "/contact", label: "Contact", icon: "✉" },
+  { to: "/",            label: "Dashboard",    icon: "▦"  },
+  { to: "/transactions",label: "Transactions", icon: "⇄"  },
+  { to: "/savings",     label: "Savings",      icon: "🐖" },
+  { to: "/budget",      label: "Budget",       icon: "📊" },
+  { to: "/about",       label: "About",        icon: "ℹ"  },
+  { to: "/contact",     label: "Contact",      icon: "✉"  },
 ];
 
 export default function Sidebar() {

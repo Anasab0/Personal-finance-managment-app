@@ -13,7 +13,7 @@ export default function ContactPage() {
   const contacts = [
     { icon: "✉️", label: "Email", value: "hello@spendly.co.uk" },
     { icon: "💬", label: "Live Chat", value: "Available 9am-6pm GMT" },
-    { icon: "📍", label: "Office", value: "London, United Kingdom" },
+    { icon: "📍", label: "Office", value: "Leicester, United Kingdom" },
   ];
 
   return (

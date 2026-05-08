@@ -6,9 +6,9 @@ import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import TransactionsPage from "./pages/TransactionsPage";
 import SavingsPage from "./pages/SavingsPage";
+import BudgetPage from "./pages/BudgetPage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
-
 
 function ComingSoon({ page }) {
   return (
@@ -29,39 +29,22 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={
-            <ProtectedRoute>
-              <Layout>
-                <DashboardPage />
-              </Layout>
-            </ProtectedRoute>
+            <ProtectedRoute><Layout><DashboardPage /></Layout></ProtectedRoute>
           } />
           <Route path="/transactions" element={
-            <ProtectedRoute>
-              <Layout>
-                <TransactionsPage />
-              </Layout>
-            </ProtectedRoute>
+            <ProtectedRoute><Layout><TransactionsPage /></Layout></ProtectedRoute>
           } />
           <Route path="/savings" element={
-            <ProtectedRoute>
-              <Layout>
-                <SavingsPage />
-              </Layout>
-           </ProtectedRoute>
+            <ProtectedRoute><Layout><SavingsPage /></Layout></ProtectedRoute>
+          } />
+          <Route path="/budget" element={
+            <ProtectedRoute><Layout><BudgetPage /></Layout></ProtectedRoute>
           } />
           <Route path="/about" element={
-            <ProtectedRoute>
-              <Layout>
-                <AboutPage />
-              </Layout>
-            </ProtectedRoute>
+            <ProtectedRoute><Layout><AboutPage /></Layout></ProtectedRoute>
           } />
           <Route path="/contact" element={
-            <ProtectedRoute>
-              <Layout>
-                <ContactPage />
-              </Layout>
-            </ProtectedRoute>
+            <ProtectedRoute><Layout><ContactPage /></Layout></ProtectedRoute>
           } />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
